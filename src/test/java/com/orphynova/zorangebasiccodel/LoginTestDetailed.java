@@ -1,10 +1,9 @@
-package com.orphynova.orangebasictrial;
+package com.orphynova.zorangebasiccodel;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -70,7 +69,7 @@ public class LoginTestDetailed {
     public void exceptionHandling() {
         try {
             float d = 3/0; // divide by zero error
-            driver.findElement(By.xpath("//*[@id='txtUsernam']"));  // element doest exist
+            driver.findElement(By.xpath("//*[@id='txtUsernam']"));  // element doesn't exist
 
         } catch (NoSuchElementException excepError){
             System.out.println("EXCEPTIONM  occurred  -: "+ excepError.getMessage());
