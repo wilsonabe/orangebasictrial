@@ -15,7 +15,7 @@ public class LoginPage extends PageBase {
 
     public void Login(String Username, String Password){
         setText(By.xpath(txtUserName),Username);
-        setText(By.xpath(txtUserName),Password);
+        setText(By.xpath(txtPassword),Password);
         click(By.xpath(btnLogin));
 
 //    driver.findElement(By.xpath(txtUserName)).sendKeys(Username);
