@@ -22,8 +22,8 @@ public class TestBase {
         driver.get(BASE_URL);
     }
 
-    @AfterMethod
-    public void CloseBrowser() {
-        driver.quit();
-    }
+  //  @AfterMethod
+   // public void CloseBrowser() {
+   //     driver.quit();
+   // }
 }
