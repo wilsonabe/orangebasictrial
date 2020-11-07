@@ -3,7 +3,6 @@ package com.orphynova.tests;
 import com.orphynova.lib.TestBase;
 import com.orphynova.pages.JobShiftPage;
 import com.orphynova.pages.LoginPage;
-import org.junit.Assert;
 import org.testng.annotations.Test;
 
 public class JobShiftTest extends TestBase {
@@ -12,9 +11,9 @@ public class JobShiftTest extends TestBase {
     public void addJobShift() {    // Adding job shift
         new LoginPage(driver).Login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addBtnClick("ShiftAW2");
+        JSPage.addBtnClick("ShiftAW3");
         JSPage.selectDropdown("09:15", "16:00");
-        JSPage.SelectEmployee("Joe Root");
+        JSPage.SelectEmployee("Goutam Ganesh");
         JSPage.clickAddEmp();
         JSPage.clickSave("Successfully Saved");
     }
@@ -25,14 +24,14 @@ public class JobShiftTest extends TestBase {
         JobShiftPage JSPage = new JobShiftPage(driver);
         JSPage.addBtnClick("ShiftAW3");
         JSPage.selectDropdown("09:15", "16:00");
-        JSPage.SelectEmployee("Joe Root");
+        JSPage.SelectEmployee("Alice Duval");
         JSPage.clickCancel();
     }
 
 
 
     @Test
-    public void cancelDeleteShifts() {    // Delete job shift
+    public void cancelDeleteShifts() {    // Cancel Delete job shift
         new LoginPage(driver).Login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
         JSPage.selCheckBox("3");

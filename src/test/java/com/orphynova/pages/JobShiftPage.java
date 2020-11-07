@@ -1,6 +1,7 @@
 package com.orphynova.pages;
 
 import com.orphynova.lib.PageBase;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -28,13 +29,19 @@ public class JobShiftPage extends PageBase {
    public void clickDeleteBtn(String expAlertMsg) {
       click(By.xpath(btnDelete));
       // Confirming delete alert
-      Assert.assertEquals(actualAlertMsg,expAlertMsg,"Alert did not pop up !");
-      click(By.xpath(btnAlertOK));
+      Alert alertMsg = driver.switchTo().alert();
+     // By.xpath(actualAlertMsg)
+     // Boolean confirm = isElementVisible(By.xpath(actualAlertMsg));// System.out.println(confirm);
+      Assert.assertEquals(alertMsg.getText(),expAlertMsg,"Alert did not pop up !");
+      sleep(100);
+      alertMsg.accept();
+
+      //   click(By.xpath(btnAlertOK));
    }
    public void clickCancelDeleteBtn(String expAlertMsg) {
       click(By.xpath(btnDelete));
       // Confirming delete alert
-      Assert.assertEquals(actualAlertMsg,expAlertMsg,"Alert did not pop up !");
+      Assert.assertEquals(By.xpath(actualAlertMsg),expAlertMsg,"Alert did not pop up !");
       click(By.xpath(btnAlertCancel));
    }
 
