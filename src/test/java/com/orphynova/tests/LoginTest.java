@@ -9,7 +9,7 @@ public class LoginTest extends TestBase {
         @Test
         public void validLoginTest() {
         LoginPage loginpage = new LoginPage(driver);
-        loginpage.Login("Admin","admin123").assertWelcomeMessage();
+        loginpage.login("Admin","admin123").assertWelcomeMessage();
 
       //  new HeaderPage(driver).assertWelcomeMessage();
         }

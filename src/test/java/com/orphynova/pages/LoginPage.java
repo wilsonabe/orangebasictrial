@@ -15,7 +15,7 @@ public class LoginPage extends PageBase {
         super(driver);
     }
 
-    public HeaderPage Login(String Username, String Password) {
+    public HeaderPage login(String Username, String Password) {
         setText(By.xpath(txtUserName), Username);
         setText(By.xpath(txtPassword), Password);
         click(By.xpath(btnLogin));

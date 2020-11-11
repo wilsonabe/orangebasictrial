@@ -3,27 +3,39 @@ package com.orphynova.lib;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.*;
 
 public class TestBase {
     protected WebDriver driver;
-    private final String BASE_URL = "https://opensource-demo.orangehrmlive.com/index.php/auth/login";
-
-    @BeforeTest
-    public void BeforeTestSetup() {
+    public static final String BASE_URL = "https://opensource-demo.orangehrmlive.com";
+    @BeforeSuite
+    public void beforeSuite(){
         WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
-
     @BeforeMethod
-    public void BeforeMethod() {
-        driver = new ChromeDriver();
+    @Parameters("browser")
+    public void setup(@Optional("chrome") String browser){
+        switch (browser){
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "firefox" :
+                driver = new FirefoxDriver();
+                break;
+            case "safari":
+                driver = new SafariDriver();
+                break;
+        }
+
+        driver.manage().window().maximize();
         driver.get(BASE_URL);
     }
 
-  //  @AfterMethod
-   // public void CloseBrowser() {
-   //     driver.quit();
-   // }
+    @AfterMethod
+    public void clear(){
+        driver.quit();
+    }
 }

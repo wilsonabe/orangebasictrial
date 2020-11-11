@@ -6,43 +6,35 @@ import com.orphynova.pages.LoginPage;
 import org.testng.annotations.Test;
 
 public class JobShiftTest extends TestBase {
-
     @Test
     public void addJobShift() {    // Adding job shift
-        new LoginPage(driver).Login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
+        new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addBtnClick("ShiftAW3");
-        JSPage.selectDropdown("09:15", "16:00");
-        JSPage.SelectEmployee("Goutam Ganesh");
-        JSPage.clickAddEmp();
-        JSPage.clickSave("Successfully Saved");
+        JSPage.addJobShift("ShiftAW3", "09:15", "16:00", "Lisa Andrews", "Successfully Saved");
     }
+//
 
     @Test
     public void addJobShiftCancel() {    // Cancelling job shift Add
-        new LoginPage(driver).Login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
+        new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addBtnClick("ShiftAW3");
-        JSPage.selectDropdown("09:15", "16:00");
-        JSPage.SelectEmployee("Alice Duval");
-        JSPage.clickCancel();
+        JSPage.addJobShiftCancel("ShiftAW3", "09:15", "16:00", "Charlie Carter");
     }
-
 
 
     @Test
     public void cancelDeleteShifts() {    // Cancel Delete job shift
-        new LoginPage(driver).Login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
+        new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.selCheckBox("3");
-        JSPage.clickCancelDeleteBtn("Delete records?");
+        JSPage.cancelDeleteShifts("4");
     }
 
     @Test
     public void deleteShifts() {    // Delete job shift
-        new LoginPage(driver).Login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
+        new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.selCheckBox("3");
-        JSPage.clickDeleteBtn("Delete records?");
+        JSPage.addJobShift("ShiftAW7", "08:15", "16:00", "Dominic Chase", "Successfully Saved");
+        JSPage.deleteShifts("3","successfully Deleted");
+
     }
 }

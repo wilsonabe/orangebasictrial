@@ -22,7 +22,6 @@ public class PageBase {
     public PageBase(WebDriver driver) {
         this.driver = driver;
     }
-
     protected void click(By by) {
         try {
             new WebDriverWait(driver,WAIT_TIME)
@@ -239,6 +238,7 @@ public class PageBase {
             e.printStackTrace();
         }
     }
+    //Ignore
     protected void clickJSE(By by){
         JavascriptExecutor js=(JavascriptExecutor) driver;
         WebElement webElement = new WebDriverWait(driver,WAIT_TIME)
@@ -262,6 +262,7 @@ public class PageBase {
         }
     }
 
+    //Ignore this
     protected void clickSelectButton(By by, int ... retries){
         if(retries.length==0){
             retries = new int[1];
@@ -290,6 +291,7 @@ public class PageBase {
         }
     }
 
+    //Ignore this
     protected void selectOptionButton(String label,String option, int ... retries){
         String selectButton = "//*[text()='XXX']//following::label[text()='YYY'][1]//parent::span"
                 .replace("XXX",label)
