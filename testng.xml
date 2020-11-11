@@ -5,7 +5,7 @@
         <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="com.orphynova.tests.LoginTest" />
-            <class name="com.orphynova.tests..JobTitlesTest"></class>
+            <class name="com.orphynova.tests.JobTitlesTest"></class>
         </classes>
     </test>
     <test name="Firefox Tests" >
