@@ -10,7 +10,7 @@ public class JobShiftTest extends TestBase {
     public void addJobShift() {    // Adding job shift
         new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addJobShift("ShiftAW3", "09:15", "16:00", "Lisa Andrews", "Successfully Saved");
+        JSPage.addJobShift("ShiftAW8", "09:15", "16:00", "Nathan Elliot", "Successfully Saved");
     }
 //
 
@@ -33,7 +33,7 @@ public class JobShiftTest extends TestBase {
     public void deleteShifts() {    // Delete job shift
         new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addJobShift("ShiftAW7", "08:15", "16:00", "Dominic Chase", "Successfully Saved");
+        JSPage.addJobShift("ShiftAW9", "08:15", "16:00", "Dominic Chase", "Successfully Saved");
         JSPage.deleteShifts("3","successfully Deleted");
 
     }
