@@ -22,6 +22,7 @@ public class PageBase {
     public PageBase(WebDriver driver) {
         this.driver = driver;
     }
+
     protected void click(By by) {
         try {
             new WebDriverWait(driver,WAIT_TIME)
@@ -94,6 +95,7 @@ public class PageBase {
                 WebElement we = new WebDriverWait(driver, WAIT_TIME)
                         .until(ExpectedConditions
                                 .presenceOfElementLocated(by));
+                we.clear();
                 we.sendKeys(text);
                 String value = driver.findElement(by).getAttribute("value");
                 if(!value.equals(text)){

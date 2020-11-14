@@ -3,6 +3,7 @@ package com.orphynova.tests;
 import com.orphynova.lib.TestBase;
 import com.orphynova.pages.JobShiftPage;
 import com.orphynova.pages.LoginPage;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class JobShiftTest extends TestBase {
@@ -10,7 +11,7 @@ public class JobShiftTest extends TestBase {
     public void addJobShift() {    // Adding job shift
         new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addJobShift("ShiftAW8", "09:15", "16:00", "Nathan Elliot", "Successfully Saved");
+        JSPage.commonAdd("add","ShiftAW8", "09:15", "16:00", "Linda Jane Anderson");
     }
 //
 
@@ -18,7 +19,7 @@ public class JobShiftTest extends TestBase {
     public void addJobShiftCancel() {    // Cancelling job shift Add
         new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addJobShiftCancel("ShiftAW3", "09:15", "16:00", "Charlie Carter");
+        JSPage.commonAdd("addCancel","ShiftAW3", "09:15", "16:00", "Charlie Carter");
     }
 
 
@@ -33,8 +34,14 @@ public class JobShiftTest extends TestBase {
     public void deleteShifts() {    // Delete job shift
         new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.addJobShift("ShiftAW9", "08:15", "16:00", "Dominic Chase", "Successfully Saved");
+        JSPage.commonAdd("add","ShiftAW9", "08:15", "16:00", "Dominic Chase");
         JSPage.deleteShifts("3","successfully Deleted");
-
+    }
+    @Test
+    public void modifyJobShift() {    // Modifying job shift
+        new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
+        JobShiftPage JSPage = new JobShiftPage(driver);
+        JSPage.commonAdd("add","ShiftAWC1", "09:15", "16:00", "Melan Peiris");
+        JSPage.modifyJobShift("ShiftAWC1","ShiftAWM2","08:30","16:30","Joe Root");
     }
 }
