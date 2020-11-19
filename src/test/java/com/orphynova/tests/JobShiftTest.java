@@ -1,17 +1,32 @@
 package com.orphynova.tests;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.orphynova.datamodels.jobshifts.JSModel;
 import com.orphynova.lib.TestBase;
 import com.orphynova.pages.JobShiftPage;
 import com.orphynova.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.net.URL;
+
 public class JobShiftTest extends TestBase {
+    ObjectMapper objectMapper = new ObjectMapper();
     @Test
-    public void addJobShift() {    // Adding job shift
-        new LoginPage(driver).login("Admin", "admin123").selectMenu("Admin|Job|Work Shifts");
+    public void addJobShift() throws IOException {    // Adding job shift
+        URL url = getClass().getClassLoader().getResource("testdata/jobshifts/jobshifts1.json");
+        JSModel jsModel = objectMapper.readValue(url,JSModel.class);
+        new LoginPage(driver).login(jsModel.getUser().getUsername(),jsModel.getUser().getPassword()).selectMenu("Admin|Job|Work Shifts");
         JobShiftPage JSPage = new JobShiftPage(driver);
-        JSPage.commonAdd("add","ShiftA", "09:15", "16:00", "Linda Jane Anderson");
+        JSPage.commonAdd(jsModel.getShiftname(),
+                jsModel.getAction(),
+                jsModel.getFromtime(),
+                jsModel.getTotime(),
+                jsModel.getEmployee());
+//        JSPage.commonAdd("ShiftA","add","09:15", "16:00", "Linda Jane Anderson");
+
+
     }
 //
 

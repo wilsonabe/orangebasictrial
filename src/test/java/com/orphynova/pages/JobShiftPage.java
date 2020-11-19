@@ -36,13 +36,13 @@ public class JobShiftPage extends PageBase {
       super(driver);
    }
 
-   Random rand = new Random();
+   //Random rand = new Random();
    int upperbound = 5;
 
 
    public String commonAdd(String action,String ShiftName,String FromTime, String ToTime,String EmpName){
       click(By.xpath(btnAdd));
-      this.ShiftName1 = ShiftName+ rand.nextInt(upperbound);
+      this.ShiftName1 = ShiftName+ new Random().nextInt(upperbound);
       setText(By.xpath(txtShift), ShiftName1);
       //   selectDropdown(FromTime,ToTime);
       select(By.xpath(selWSFrom), FromTime);
